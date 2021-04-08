@@ -1,4 +1,4 @@
-package objects;
+package org.example.therooms.objects;
 
 import javax.xml.bind.annotation.*;
 import java.io.Serializable;
