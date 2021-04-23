@@ -1,10 +1,8 @@
-package org.example.therooms.objects;
+package belarus.sergeybukatyi.therooms.objects;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
-@XmlRootElement(name = "room")
+
 public class Room implements Serializable {
     private String roomName;
     private String country;
@@ -24,7 +22,6 @@ public class Room implements Serializable {
         return roomName;
     }
 
-    @XmlElement(name = "room_name")
     public void setRoomName(String roomName) {
         this.roomName = roomName;
     }
@@ -33,7 +30,6 @@ public class Room implements Serializable {
         return country;
     }
 
-    @XmlElement(name = "country")
     public void setCountry(String country) {
         this.country = country;
     }
@@ -42,7 +38,6 @@ public class Room implements Serializable {
         return lampSwitched;
     }
 
-    @XmlElement(name = "lampSwitched")
     public void setLampSwitched(boolean lampSwitched) {
         this.lampSwitched = lampSwitched;
     }

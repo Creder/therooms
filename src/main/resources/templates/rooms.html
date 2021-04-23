@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>RoomsWithLamps World</title>
+</head>
+<body>
+<h2>Welcome to RoomsWithLamps World!</h2>
+
+    <th:block th:if="${Rooms == 'empty' }"><p>Rooms not found!</p></th:block>
+    <th:block th:if ="${Rooms != 'empty'}">
+        <ul id="RoomsList">
+        <th:block th:each="room : ${Rooms}">
+            <li><a th:href="@{'/room/'+${room.getRoomName().toLowerCase().trim().replace(' ', '_')}}" th:text="${room.getRoomName()}"></a> </li>
+        </th:block>
+        </ul>
+    </th:block>
+
+<div>
+    <h2>Create your own room!</h2>
+    <form method="POST" action="/addRoom">
+        <p>Room name: </p><input type="text" placeholder="Room name" name="roomName"/>
+        <p>Country:</p>
+        <div class="dropdown">
+            <select name="country">
+                <th:block th:each="country : ${Countries}">
+                    <option th:value="${country.key}" th:text="${country.value}"></option>
+                </th:block>
+            </select>
+        </div>
+        <input type="submit" value="Create!"/>
+    </form>
+    <div th:switch="${Created}">
+        <p th:case="true">Room is created</p>
+        <p th:case="false">Room is already exists</p>
+    </div>
+</div>
+</body>
+</html>

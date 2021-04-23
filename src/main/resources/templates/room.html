@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>
+       <th:block th:text="${room.roomName}"></th:block>
+    </title>
+</head>
+<body>
+<a href="/index">Back</a>
+<div id="room">
+    <div id="roomName"><p th:text="${room.roomName}"></p></div>
+    <div id="lamp"></div>
+</div>
+
+<div id="button"></div>
+<div id="message"></div>
+</body>
+<script src="/js/script.js"></script>
+</html>

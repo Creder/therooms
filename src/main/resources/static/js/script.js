@@ -1,18 +1,17 @@
-var roomName = window.location.href.replace(window.location.href.substr(0, window.location.href.indexOf("room/")+5), '');
 createButton();
-loadRoom(roomName);
+loadRoomLamp();
 
 function createButton() {
-    document.getElementById("button").innerHTML = '<button onclick=\'switchLamp(roomName)\'>Click!</button>';
+    document.getElementById("button").innerHTML = "<button onclick='switchLamp()'>Click!</button>";
 }
-function loadRoom(roomName) {
+function loadRoomLamp() {
     httpRequest = new XMLHttpRequest();
 
     if (!httpRequest) {
         console.log('Unable to create XMLHTTP instance');
         return false;
     }
-    httpRequest.open('GET', "/therooms_war/getroom?roomName="+roomName);
+    httpRequest.open('GET', window.location.href+"/getLamp");
 
     httpRequest.responseType = 'json';
     httpRequest.send();
@@ -20,37 +19,45 @@ function loadRoom(roomName) {
         if (httpRequest.readyState === XMLHttpRequest.DONE) {
             if (httpRequest.status === 200) {
                 var response = httpRequest.response;
-                if(response.lamp === true){
+                if(response === true){
                     document.getElementById("lamp").innerText = "Lamp is on.";
                 }
                 else document.getElementById("lamp").innerText = "Lamp is off.";
-                document.getElementById("roomName").innerHTML = response.name;
             }
-        } else {
-            console.log('Something went wrong..!!');
+            else {
+                console.log('Something went wrong..!!');
+        }
         }
     }
 }
 
 setInterval(function () {
-    loadRoom(roomName)
+    loadRoomLamp()
 }, 2000);
 
-function switchLamp(roomName) {
+function switchLamp() {
     httpRequest = new XMLHttpRequest();
 
     if (!httpRequest) {
         console.log('Unable to create XMLHTTP instance');
         return false;
     }
-    httpRequest.open('GET', "/therooms_war/switch?roomName="+roomName);
+    httpRequest.open('GET', window.location.href+"/switch");
 
     httpRequest.responseType = 'json';
     httpRequest.send();
     httpRequest.onreadystatechange = function () {
         if (httpRequest.readyState === XMLHttpRequest.DONE) {
             if (httpRequest.status === 200) {
-                loadRoom(roomName);
+                var response = httpRequest.response;
+                if(response === 0){
+                    document.getElementById("message").innerText = "Lamp switched";
+                }
+                else{
+                    document.getElementById("message").innerText = "Error";
+                }
+
+                loadRoomLamp();
             }
         }
     }
