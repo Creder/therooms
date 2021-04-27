@@ -4,43 +4,44 @@ import java.io.Serializable;
 
 
 public class Room implements Serializable {
-    private String roomName;
-    private String country;
-    private boolean lampSwitched;
 
-    public Room() {
+  private String roomName;
+  private String country;
+  private boolean lampSwitched;
 
-    }
+  public Room() {
 
-    public Room(String roomName, String country) {
-        this.roomName = roomName;
-        this.country = country;
-        this.lampSwitched = false;
-    }
+  }
 
-    public String getRoomName() {
-        return roomName;
-    }
+  public Room(String roomName, String country) {
+    this.roomName = roomName;
+    this.country = country;
+    this.lampSwitched = false;
+  }
 
-    public void setRoomName(String roomName) {
-        this.roomName = roomName;
-    }
+  public String getRoomName() {
+    return roomName;
+  }
 
-    public String getCountry() {
-        return country;
-    }
+  public void setRoomName(String roomName) {
+    this.roomName = roomName;
+  }
 
-    public void setCountry(String country) {
-        this.country = country;
-    }
+  public String getCountry() {
+    return country;
+  }
 
-    public boolean isLampSwitched() {
-        return lampSwitched;
-    }
+  public void setCountry(String country) {
+    this.country = country;
+  }
 
-    public void setLampSwitched(boolean lampSwitched) {
-        this.lampSwitched = lampSwitched;
-    }
+  public boolean isLampSwitched() {
+    return lampSwitched;
+  }
+
+  public void setLampSwitched(boolean lampSwitched) {
+    this.lampSwitched = lampSwitched;
+  }
 
 
 }

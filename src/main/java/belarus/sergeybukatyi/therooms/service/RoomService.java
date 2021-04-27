@@ -2,36 +2,35 @@ package belarus.sergeybukatyi.therooms.service;
 
 import belarus.sergeybukatyi.therooms.dao.RoomsDAO;
 import belarus.sergeybukatyi.therooms.objects.Room;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class RoomService {
-    private final RoomsDAO roomsDAO;
 
-    @Autowired
-    public RoomService(RoomsDAO roomsDAO){
-        this.roomsDAO = roomsDAO;
-    }
+  private final RoomsDAO roomsDAO;
 
-    public List<Room> getRooms(){
-        return roomsDAO.getRooms();
-    }
+  @Autowired
+  public RoomService(RoomsDAO roomsDAO) {
+    this.roomsDAO = roomsDAO;
+  }
 
-    public boolean addRoom(String roomName, String country)
-    {
-        Room newRoom = new Room(roomName, country);
-        return roomsDAO.addRoom(newRoom);
-    }
+  public List<Room> getRooms() {
+    return roomsDAO.getRooms();
+  }
 
-    public Room getRoom(String roomName){
-        return roomsDAO.getOneRoom(roomName);
-    }
+  public boolean addRoom(String roomName, String country) {
+    Room newRoom = new Room(roomName, country);
+    return roomsDAO.addRoom(newRoom);
+  }
 
-    public int switchLamp(String roomName){
-        return roomsDAO.switchLamp(roomName);
-    }
+  public Room getRoom(String roomName) {
+    return roomsDAO.getOneRoom(roomName);
+  }
+
+  public int switchLamp(String roomName) {
+    return roomsDAO.switchLamp(roomName);
+  }
 
 }

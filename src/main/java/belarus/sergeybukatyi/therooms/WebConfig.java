@@ -9,19 +9,19 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class WebConfig {
 
-    private final CountryFilter countryFilter;
+  private final CountryFilter countryFilter;
 
-    @Autowired
-    public WebConfig(CountryFilter countryFilter) {
-        this.countryFilter = countryFilter;
-    }
+  @Autowired
+  public WebConfig(CountryFilter countryFilter) {
+    this.countryFilter = countryFilter;
+  }
 
-    @Bean
-    public FilterRegistrationBean<CountryFilter> filterRegistrationBean(){
-        FilterRegistrationBean<CountryFilter> registrationBean = new FilterRegistrationBean<>();
-        registrationBean.setFilter(countryFilter);
-        registrationBean.addUrlPatterns("/room/*");
-        return registrationBean;
-    }
+  @Bean
+  public FilterRegistrationBean<CountryFilter> filterRegistrationBean() {
+    FilterRegistrationBean<CountryFilter> registrationBean = new FilterRegistrationBean<>();
+    registrationBean.setFilter(countryFilter);
+    registrationBean.addUrlPatterns("/room/*");
+    return registrationBean;
+  }
 }
 
